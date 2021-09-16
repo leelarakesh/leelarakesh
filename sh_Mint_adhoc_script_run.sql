@@ -1,0 +1,21 @@
+#export login_Detl="GTAPAPP_RLS[GTASTGPA1]/qazXSW21_12345678@//hkg3pl0704n2-scan.gsdegss.HDEV:2001/M6.HDEV"
+#export login_Detl="GTASTGPA1/Gdwjy1maep9@//hkg3pl0704n2-scan.gsdegss.HDEV:2001/M6.HDEV"
+#export login_Detl="GTASTGPA1/wOqEKnOsBB4L6y9N@//20097423.HDEV:2001/14.HDEV"
+export login_Detl="GTASTGPA1/x3sf&*?543_yw?pp@//20097423.HDEV:2001/14.HDEV"
+#export login_Detl="GTASTGPA1/x3sf&*?543_yw?pp@//20064576.HDEV:2001/U4.HDEV"
+#export login_Detl="GTASTGPA1/x3sf&*?543_yw?pp@//20079861.HDEV:2001/11.HDEV"
+
+export loc="/gtaplocal/GTAP_MDR_INFILES/MINT_FILES/MINT_ADHOC"
+#export loc="/gtaplocal/GTAP_MDR_INFILES/MINT_FILES/MINT_HIST"
+export repopath="/gtaplocal/GTAP_MDR_INFILES/MINT_MIGSCRIPTS_REPO/MINT_MIGSCRIPTS/Scripts"
+export ControlLoc=""$repopath"/Sqlldr/Control_Files"
+export logtime="$L_TNS_$(date -u +%d%h%y_%T)"
+start_time="$(date -u +%s.%N)"
+echo "started  parallel_MDR.sh at:::"$(date)"::logtime::"$logtime"" |& tee -a "$loc"/Adhoc_"$logtime".log echo "started  parallel_MDR.sh at:::"$(date)"::logtime::"$logtime"" |& tee -a "$loc"/Adhoc_"$logtime".log
+sqlldr "$login_Detl"  control="$ControlLoc"'/GFAS_PROSERVICECLIENTTBL.txt' log="$loc"'/MigrationSpools/GFAS_PROSERVICECLIENTTBL.log' "DATA=""$loc""/"Pro_Service_Clients_import_Unicode.txt" "BAD="$loc"/"BADFILE/GFAS_PROSERVICECLIENTTBL.CSV"
+#sqlldr "$login_Detl"  control="$ControlLoc"'/GFAS_TRANSACTIONSTBL_CDSC.txt' log="$loc"'/MigrationSpools/GFAS_TRANSACTIONSTBL_CDSC.log' "DATA=""$loc""/"INFILES/MINT_MDR1_HistoricExtracts_SL/MINT_trans.txt" "BAD="$loc"/"BADFILE/GFAS_TRANSACTIONSTBL_CDSC.CSV"
+wait
+end_time="$(date -u +%s.%N)"
+elapsed="$(bc <<<"$end_time-$start_time")"
+echo " Total of $elapsed seconds elapsed for process" |& tee -a "$loc""/Adhoc__""$logtime"".log"
+echo "End  parallel_MDR at:::"$(date)"" |& tee -a "$loc""/Adhoc_""$logtime"".log"
