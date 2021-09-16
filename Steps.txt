@@ -1,0 +1,158 @@
+Find Files 
+find / -name "Sentinel" 2>/dev/null
+https://www.cyberciti.biz/faq/how-to-find-a-folder-in-linux-using-the-command-line/
+
+
+.sql-Test Zip File
+unzip -t /gtapstaging/MIGVALID/incoming/FXP-PEN20180903.zip
+unzip -t /gtapstaging/MIGVALID/incoming/FXDOB.zip
+unzip "/gtapcommon/MDR1/incoming/FXDOB corrected.zip" -d /gtaplocal/GTAP_MDR_INFILES/MDR4/INFILES/GBP
+bash /gtaplocal/GTAP_MDR_INFILES/fx_adhoc_script_run.sh
+
+
+--remove the file or delete file or remove directory
+rm -rf /gtaplocal/MDR1/fcis/incsdfsdfoming/
+rm -rf /gtaplocal/MDR2/fcis/FCIS_DST_MIG/
+rm -rf /gtapcommon/MDR1/incoming/history_new/*.*
+
+rm -rf /gtapcommon/MDR1/dblog/*.*
+--- setup the path 
+
+set echo PATH=%ORACLE_HOME%/bin;%PATH%
+export ORACLE_HOME=/opt/oraapp/client/12.1.0.2_x64_DBAocl028
+PATH=$PATH:$HOME/bin:$JAVA_HOME/bin
+vi .bash_profile
+
+export PATH="/opt/oraapp/client/12.1.0.2_x64_DBAocl028/bin:$PATH"
+export ORACLE_HOME="/opt/oraapp/client/12.1.0.2_x64_DBAocl028/"
+export TNS_ADMIN="/gtaplocal/tnsadmin"
+
+
+PATH: /opt/oraapp/client/12.1.0.2_x64_DBAocl028/bin
+ORACLE_BASE: /opt/oraapp
+ORA_NLS10: /opt/oraapp/client/12.1.0.2_x64_DBAocl028/nls/data
+TNS_ADMIN: /gtaplocal/tnsadmin
+ORACLE_HOME: /opt/oraapp/client/12.1.0.2_x64_DBAocl028
+
+
+line count in the file 
+wc -l *.CSV
+
+Leopardrecs20181207STE_v1.zip
+
+--FXDOB
+sqlldr TEST/TEST@MIGVALID control='/gtaplocal/OFSS_DST_Load_Temp/Control_Files/FXDOB.txt' log='/gtaplocal/OFSS_DST_Load_Temp/Spool/GBP_01092018_155359_FXDOB.log' "DATA=/gtaplocal/OFSS_DST_Load_Temp/INFILES/FXDOB.CSV" 
+
+--fxy
+sqlldr TEST/TEST@MIGVALID control='/gtaplocal/MDR1/fcis/FCIS_DST_MIG/Control_Files/FXY_SH.txt' log='/gtaplocal/MDR1/fcis/FCIS_DST_MIG/Spool/GBP_19122018_155359_FXY_SH.log' "DATA=/gtaplocal/MDR1/fcis/FCIS_DST_MIG/INFILES/GBP/FXY_SH.CSV" "BAD=/gtaplocal/MDR1/fcis/FCIS_DST_MIG/BADFILE/GBP_19122018_155359_FXY_SH.CSV"
+
+
+"to_number(:FXYEXRTE))"
+
+
+
+
+
+--
+ cd /gtapcommon/UAT/interface/UKTR/OUT
+
+zip -u -9 -v FC_FACT_POSITION_full_12345.zip FC_FACT_POSITION_full_12345.txt
+
+--
+Zip the files
+/gtapcommon/MDR2/dblog
+zip -u -9 -v SYSADMIN1_37476818_20190528183507.zip SYSADMIN1_37476818_20190528183507.TXT
+zip -u -9 -v SYSADMIN1_37497598_20190531100845.zip SYSADMIN1_37497598_20190531100845.TXT
+zip -u -9 -v -r MDRRecs_dblog.zip *.*
+
+
+zip -u -9 -v -xINFILES_MDR1DATA GTAP.zip GTAPTEST*.*
+$ zip -u -9 -v -r -xINFILES_MDR1DATA MDR2_ldr.zip /gtaplocal/MDR2/fcis/FCIS_DST_MIG/*
+zip -u -9 -v -r -xINFILES_MDR1 MDR1_ldr.zip /gtaplocal/MDR1/fcis/FCIS_DST_MIG
+
+zip [-options] [-b path] [-t mmddyyyy] [-n suffixes] [zipfile list] [-xi list]
+  The default action is to add or replace zipfile entries from list, which
+  can include the special name - to compress standard input.
+  If zipfile and list are omitted, zip compresses stdin to stdout.
+  -f   freshen: only changed files  -u   update: only changed or new files
+  -d   delete entries in zipfile    -m   move into zipfile (delete OS files)
+  -r   recurse into directories     -j   junk (don't record) directory names
+  -0   store only                   -l   convert LF to CR LF (-ll CR LF to LF)
+  -1   compress faster              -9   compress better
+  -q   quiet operation              -v   verbose operation/print version info
+  -c   add one-line comments        -z   add zipfile comment
+  -@   read names from stdin        -o   make zipfile as old as latest entry
+  -x   exclude the following names  -i   include only the following names
+  -F   fix zipfile (-FF try harder) -D   do not add directory entries
+  -A   adjust self-extracting exe   -J   junk zipfile prefix (unzipsfx)
+  -T   test zipfile integrity       -X   eXclude eXtra file attributes
+  -y   store symbolic links as the link instead of the referenced file
+  -e   encrypt                      -n   don't compress these suffixes
+  -h2  show more help
+
+  --- get the file and create as external table 
+  drop table alert_log;
+create table alert_log
+(recnumber number,
+txt_line varchar2(512)
+ )
+organization external
+(type ORACLE_LOADER
+default directory GTAP_EXTERNAL_DIR
+access parameters (records delimited by newline
+fields
+(recnumber   RECNUM,
+  txt_line char(512)))
+location ('GTAPTEST1_41483819_20190107113216.TXT')
+);
+
+
+jira tickets
+https://jira.HDEV/browse/HSSIS-10787
+17:51
+
+--drop table FX_PLANMGR
+--used for the population of the offplnmgr.xls
+create table FX_PLANMGR
+(
+MCID		varchar2(6),
+A94EXCLTID	varchar2(20),
+D82PLNMGID	varchar2(12),	
+D82INREVRN	varchar2(12)
+);
+="insert into FX_PLANMGR values ('"&A2&"','"&B2&"','"&C2&"')"
+Leopard20190805
+zip -u -9 -v -p  Corp_Joint_Holders_Report_20190628.zip Corp_Joint_Holders_Report_20190628.csv -e 
+
+zip -u -9 -v -p Dedupe_20190614.zip *.csv -e 
+1:32:00 PM: Boyalla Leela Rakesh Reddy: -e  
+1:32:20 PM: Boyalla Leela Rakesh Reddy: need to see if kevin gets to open it 
+1:32:33 PM: Boyalla Leela Rakesh Reddy: Dedupe_20190614.zip 
+
+unzip -t -P Bsl2202# SI6A_UAT5_Extracts.zip  >> test_SI6A_UAT5_Reports.zip.txt
+
+Leopard
+
+--kill session 
+PROCEDURE pr_show_account_status (pUserName IN VARCHAR2 DEFAULT NULL);
+PROCEDURE pr_unlock_account (pUserName IN VARCHAR2 DEFAULT NULL);
+PROCEDURE pr_lock_account (pUserName IN VARCHAR2 DEFAULT NULL);
+PROCEDURE pr_change_password (pUserName IN VARCHAR2 DEFAULT NULL,
+                              pPassword IN VARCHAR2 DEFAULT NULL);
+PROCEDURE pr_kill_session (pSID              IN NUMBER DEFAULT NULL,
+                           pSerial           IN NUMBER DEFAULT NULL,
+                           pInstanceNumber   IN NUMBER DEFAULT NULL);
+PROCEDURE pr_flush_shared_pool;
+PROCEDURE pr_flush_buffer_cache;
+PROCEDURE pr_flush_buffer_cache;
+
+
+---- directotry size
+du -h --max-depth=1 | sort -hr
+
+NOT files in these subdirectories.
+find /path/to/directory -maxdepth 1 -type f -exec rm -iv {} \;
+
+find /gtaplocal/GTAP_MDR_INFILES/MDR6/INFILES -type f -exec rm -fv {} \;
+
+
