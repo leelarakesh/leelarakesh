@@ -71,6 +71,21 @@ http://www.cis.famu.edu/support/10g/Oracle_Database_10g/doc/appdev.102/a96109/pc
 
 http://ora-srv.wlv.ac.uk/oracle19c_doc/lnpls/dynamic-sql.html#GUID-8DF5B8A3-70F8-4AF5-A747-B1CE6B7D90DF
 
+https://www.morganslibrary.org/reference/plsql/array_processing.html
+
+https://www.morganslibrary.org/reference/pkgs/dbms_sql.html
+
+http://ora-srv.wlv.ac.uk/oracle19c_doc/lnpls/dynamic-sql.html#GUID-A194C9FA-221A-466B-9179-6238FEC5143B
+
+Finally, here is an example of an bulk UPDATE statement.
+https://docs.oracle.com/cd/B19306_01/appdev.102/b14258/d_sql.htm#i997061
 
 
+https://livesql.oracle.com/apex/livesql/file/tutorial_IEHP37S6LTWIIDQIR436SJ59L.html#:~:text=Live%20SQL-,Bulk%20Processing%20with%20PL/SQL,-View%20All%20Tutorials
 
+
+https://www.morganslibrary.org/reference/plsql/array_processing.html#:~:text=Fetch%20into%20DBMS_SQL%20defined%20array
+
+https://stackoverflow.com/questions/5096798/dbms-sql-execute-and-bulk-update-need-help#:~:text=BIND_ARRAY%20procedure%20in%20the%20DBMS_SQL%20package%20to%20do%20a%20bulk%20fetch.%20There%20is%20an%20example%20of%20this%20in%20the%20DBMS_SQL%20documentation.
+
+https://www.morganslibrary.org/reference/pkgs/dbms_sql.html
